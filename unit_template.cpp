@@ -2,8 +2,8 @@
 
 using namespace std;
 
-UnitTemplate::UnitTemplate() {
-}
+UnitTemplate::UnitTemplate()
+{}
 
 void UnitTemplate::add(const ComponentTemplate & component_template) {
   component_templates.push_back(component_template);

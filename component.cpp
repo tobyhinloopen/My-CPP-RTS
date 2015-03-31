@@ -1,10 +1,10 @@
 #import "component.h"
 
-Component::Component(ComponentTemplate component_template):
-component_template(component_template),
-current_health(component_template.health),
-current_damage_applied(0) {
-}
+Component::Component(ComponentTemplate component_template)
+  : component_template(component_template)
+  , current_health(component_template.health)
+  , current_damage_applied(0)
+{}
 
 void Component::apply_damage(int damage) {
   if(damage > current_health) {

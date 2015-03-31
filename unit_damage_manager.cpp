@@ -3,7 +3,7 @@
 using namespace std;
 
 UnitDamageManager::UnitDamageManager(const shared_ptr<const vector<shared_ptr<Component>>> components)
-: components(components)
+  : components(components)
 {}
 
 void UnitDamageManager::apply_damage(int damage) {
