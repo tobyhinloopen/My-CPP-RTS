@@ -3,27 +3,31 @@
 
 using namespace std;
 
-Unit::Unit(shared_ptr<vector<shared_ptr<Component>>> components)
-: components(components)
-, unit_damage_manager(components)
+int health_for_components(const shared_ptr<const vector<shared_ptr<Component>>>);
+
+Unit::Unit(const shared_ptr<const vector<shared_ptr<Component>>> components) 
+  : components(components)
+  , unit_damage_manager(components)
+  , _initial_health(health_for_components(components))
 {}
 
-void Unit::apply_damage(int damage_remaining) {
+void Unit::apply_damage(const int damage_remaining) {
   unit_damage_manager.apply_damage(damage_remaining);
 }
 
 int Unit::mass() const {
   int mass = 0;
-  for(auto component : *components)
+  for(const auto component : *components)
     mass += component->mass();
   return mass;
 }
 
+int Unit::initial_health() const {
+  return _initial_health;
+}
+
 int Unit::health() const {
-  int health = 0;
-  for(auto component : *components)
-    health += component->health();
-  return health;
+  return health_for_components(components);
 }
 
 bool Unit::alive() const {
@@ -32,4 +36,11 @@ bool Unit::alive() const {
 
 bool Unit::dead() const {
   return !alive();
+}
+
+int health_for_components(const shared_ptr<const vector<shared_ptr<Component>>> components) {
+  int health = 0;
+  for(const auto component : *components)
+    health += component->health();
+  return health;
 }

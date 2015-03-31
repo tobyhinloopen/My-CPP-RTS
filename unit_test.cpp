@@ -19,6 +19,7 @@ TEST_CASE("Unit") {
   Unit unit(unit_template.components());
 
   REQUIRE(unit.health() == 30);
+  REQUIRE(unit.initial_health() == 30);
   REQUIRE(unit.alive());
   REQUIRE(!unit.dead());
 
@@ -27,20 +28,17 @@ TEST_CASE("Unit") {
     REQUIRE(unit.health() == 22);
     REQUIRE(unit.alive());
     REQUIRE(!unit.dead());
+    REQUIRE(unit.initial_health() == 30);
   }
 
   SECTION("Applying damage just enough to trigger volatility") {
     unit.apply_damage(10);
     REQUIRE(unit.health() == 10);
-    REQUIRE(unit.alive());
-    REQUIRE(!unit.dead());
   }
 
   SECTION("Applying minor damage (not divisible by number of components)") {
     unit.apply_damage(1);
     REQUIRE(unit.health() == 29);
-    REQUIRE(unit.alive());
-    REQUIRE(!unit.dead());
   }
 
   SECTION("Applying major damage") {
