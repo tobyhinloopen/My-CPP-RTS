@@ -47,7 +47,7 @@ void UnitDamageManager::damage_component(Component & component, int damage) {
   }
 }
 
-shared_ptr<Component> UnitDamageManager::healthiest_component() {
+shared_ptr<Component> UnitDamageManager::healthiest_component() const {
   auto current_healthiest_component = *components->begin();
   for(auto component : *components)
     if(component->health() > current_healthiest_component->health())
@@ -55,7 +55,7 @@ shared_ptr<Component> UnitDamageManager::healthiest_component() {
   return current_healthiest_component;
 }
 
-int UnitDamageManager::alive_components_count() {
+int UnitDamageManager::alive_components_count() const {
   int alive_components_count = 0;
   for(auto component : *components)
     if(component->alive())
