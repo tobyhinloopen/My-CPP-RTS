@@ -3,8 +3,8 @@
 using namespace std;
 
 UnitDamageManager::UnitDamageManager(shared_ptr<vector<shared_ptr<Component>>> components)
-: components(components) {
-}
+: components(components)
+{}
 
 void UnitDamageManager::apply_damage(int damage) {
   int current_alive_components_count = alive_components_count();
@@ -49,16 +49,16 @@ void UnitDamageManager::damage_component(Component & component, int damage) {
 
 shared_ptr<Component> UnitDamageManager::healthiest_component() {
   auto current_healthiest_component = *components->begin();
-  for(auto component = components->begin()++; component != components->end(); ++component)
-    if((*component)->health() > current_healthiest_component->health())
-      current_healthiest_component = *component;
+  for(auto component : *components)
+    if(component->health() > current_healthiest_component->health())
+      current_healthiest_component = component;
   return current_healthiest_component;
 }
 
 int UnitDamageManager::alive_components_count() {
   int alive_components_count = 0;
-  for(auto component = components->begin(); component != components->end(); ++component)
-    if((*component)->alive())
+  for(auto component : *components)
+    if(component->alive())
       ++alive_components_count;
   return alive_components_count;
 }
