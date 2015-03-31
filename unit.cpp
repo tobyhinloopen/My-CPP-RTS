@@ -8,6 +8,10 @@ Unit::Unit(shared_ptr<vector<shared_ptr<Component>>> components)
 , unit_damage_manager(components)
 {}
 
+void Unit::apply_damage(int damage_remaining) {
+  unit_damage_manager.apply_damage(damage_remaining);
+}
+
 int Unit::mass() const {
   int mass = 0;
   for(auto component : *components)
@@ -22,6 +26,10 @@ int Unit::health() const {
   return health;
 }
 
-void Unit::apply_damage(int damage_remaining) {
-  unit_damage_manager.apply_damage(damage_remaining);
+bool Unit::alive() const {
+  return health() > 0;
+}
+
+bool Unit::dead() const {
+  return !alive();
 }

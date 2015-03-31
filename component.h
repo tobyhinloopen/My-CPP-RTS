@@ -6,7 +6,6 @@ public:
   int mass() const;
   int health() const;
   int volatility() const;
-
   void apply_damage(int damage);
   int damage_applied() const;
   bool alive() const;
