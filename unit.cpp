@@ -1,4 +1,5 @@
 #import "unit.h"
+#import "damage_report.h"
 #import <iostream>
 
 using namespace std;
@@ -11,8 +12,8 @@ Unit::Unit(const shared_ptr<const vector<shared_ptr<Component>>> components)
   , _initial_health(health_for_components(components))
 {}
 
-void Unit::apply_damage(const int damage_remaining) {
-  unit_damage_manager.apply_damage(damage_remaining);
+DamageReport Unit::apply_damage(const int damage_remaining) {
+  return unit_damage_manager.apply_damage(damage_remaining);
 }
 
 int Unit::mass() const {
