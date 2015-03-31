@@ -40,7 +40,7 @@ TEST_CASE("UnitDamageManager") {
     REQUIRE(though_thing.health() == 10);
   }
 
-  SECTION("The remainder-damage should apply to the 'thoughest'.") {
+  SECTION("The remainder-damage applies to the healthiest component") {
     unit_damage_manager.apply_damage(1);
 
     REQUIRE(volatile_thing.health() == 5);
