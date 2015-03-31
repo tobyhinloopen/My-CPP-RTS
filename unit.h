@@ -1,16 +1,17 @@
-#import "unit_template.h"
 #import "unit_damage_manager.h"
 #import "component.h"
 #import <vector>
+#import <memory>
+
+using namespace std;
 
 class Unit {
 public:
-  Unit(const UnitTemplate &);
+  Unit(shared_ptr<vector<shared_ptr<Component>>> components);
   int health() const;
   int mass() const;
   void apply_damage(int damage);
 private:
-  const UnitTemplate & unit_template;
-  // const UnitDamageManager unit_damage_manager;
-  std::vector<Component> components;
+  UnitDamageManager unit_damage_manager;
+  shared_ptr<vector<shared_ptr<Component>>> components;
 };

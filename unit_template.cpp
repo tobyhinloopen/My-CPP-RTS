@@ -1,5 +1,7 @@
 #import "unit_template.h"
 
+using namespace std;
+
 UnitTemplate::UnitTemplate() {
 }
 
@@ -7,12 +9,12 @@ void UnitTemplate::add(const ComponentTemplate & component_template) {
   component_templates.push_back(component_template);
 }
 
-std::vector<Component> UnitTemplate::components() const {
-  std::vector<Component> components;
-  for(auto it = component_templates.begin(); it != component_templates.end(); ++it) {
-    Component component(*it);
-    components.push_back(component);
-  }
+shared_ptr<vector<shared_ptr<Component>>> UnitTemplate::components() const {
+  auto components = make_shared<vector<shared_ptr<Component>>>();
+  for(auto component_template = component_templates.begin();
+      component_template != component_templates.end();
+      ++component_template)
+    components->push_back(make_shared<Component>(*component_template));
   return components;
 }
 

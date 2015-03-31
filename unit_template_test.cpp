@@ -19,6 +19,6 @@ TEST_CASE("UnitTemplate") {
     REQUIRE(unit_template.complexity() == 240);
     REQUIRE(unit_template.mass() == 200);
     REQUIRE(unit_template.health() == 130);
-    REQUIRE(unit_template.components().size() == 4);
+    REQUIRE(unit_template.components()->size() == 4);
   }
 }

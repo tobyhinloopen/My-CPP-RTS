@@ -16,7 +16,7 @@ TEST_CASE("Unit") {
   unit_template.add(volatile_thing);
   unit_template.add(thougher_thing);
 
-  Unit unit(unit_template);
+  Unit unit(unit_template.components());
 
   REQUIRE(unit.health() == 30);
 
@@ -30,8 +30,8 @@ TEST_CASE("Unit") {
     REQUIRE(unit.health() == 10);
   }
 
-  // SECTION("Applying minor damage (not divisible by number of components)") {
-  //   unit.apply_damage(1);
-  //   REQUIRE(unit.health() == 29);
-  // }
+  SECTION("Applying minor damage (not divisible by number of components)") {
+    unit.apply_damage(1);
+    REQUIRE(unit.health() == 29);
+  }
 }

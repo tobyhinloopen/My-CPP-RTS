@@ -4,7 +4,10 @@
 #import "component_template.h"
 #import "component.h"
 
-#include <vector>
+#import <vector>
+#import <memory>
+
+using namespace std;
 
 class UnitTemplate {
 public:
@@ -13,7 +16,7 @@ public:
   int mass() const;
   int health() const;
   int complexity() const;
-  std::vector<Component> components() const;
+  shared_ptr<vector<shared_ptr<Component>>> components() const;
 private:
-  std::vector<ComponentTemplate> component_templates;
+  vector<ComponentTemplate> component_templates;
 };

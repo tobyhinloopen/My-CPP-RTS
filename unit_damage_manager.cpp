@@ -1,6 +1,8 @@
 #import "unit_damage_manager.h"
 
-UnitDamageManager::UnitDamageManager(std::vector<Component*> components)
+using namespace std;
+
+UnitDamageManager::UnitDamageManager(shared_ptr<vector<shared_ptr<Component>>> components)
 : components(components) {
 }
 
@@ -32,11 +34,11 @@ void UnitDamageManager::apply_damage(int damage) {
 }
 
 void UnitDamageManager::apply_damage_each(int damage) {
-  for(auto component = components.begin(); component != components.end(); ++component)
-    damage_component(**component, damage);
+  for(auto component : *components)
+    damage_component(*component, damage);
 }
 
-void UnitDamageManager::damage_component(Component & component, const int damage) {
+void UnitDamageManager::damage_component(Component & component, int damage) {
   if(component.alive()) {
     component.apply_damage(damage);
     damage_each_applied_damage += component.damage_applied();
@@ -45,9 +47,9 @@ void UnitDamageManager::damage_component(Component & component, const int damage
   }
 }
 
-Component * UnitDamageManager::healthiest_component() {
-  Component * current_healthiest_component = *components.begin();
-  for(auto component = components.begin()++; component != components.end(); ++component)
+shared_ptr<Component> UnitDamageManager::healthiest_component() {
+  auto current_healthiest_component = *components->begin();
+  for(auto component = components->begin()++; component != components->end(); ++component)
     if((*component)->health() > current_healthiest_component->health())
       current_healthiest_component = *component;
   return current_healthiest_component;
@@ -55,7 +57,7 @@ Component * UnitDamageManager::healthiest_component() {
 
 int UnitDamageManager::alive_components_count() {
   int alive_components_count = 0;
-  for(auto component = components.begin(); component != components.end(); ++component)
+  for(auto component = components->begin(); component != components->end(); ++component)
     if((*component)->alive())
       ++alive_components_count;
   return alive_components_count;
