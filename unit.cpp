@@ -32,7 +32,7 @@ bool Unit::alive() const {
 }
 
 bool Unit::dead() const {
-  return !alive();
+  return health() == 0;
 }
 
 int health_for_components(const shared_ptr<const vector<shared_ptr<Component>>> components) {
