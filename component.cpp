@@ -1,19 +1,26 @@
 #import "component.h"
+#import <iostream>
+
+using namespace std;
 
 Component::Component(ComponentTemplate component_template)
   : component_template(component_template)
   , current_health(component_template.health)
-  , current_damage_applied(0)
 {}
 
-void Component::apply_damage(int damage) {
-  if(damage > current_health) {
-    current_damage_applied = current_health;
-    current_health = 0;
-  } else {
-    current_damage_applied = damage;
-    current_health -= damage;
+DamageReport Component::apply_damage(int damage) {
+  DamageReport damage_report;
+  if(alive()) {
+    if(damage >= current_health) {
+      damage_report.damage_applied = current_health;
+      damage_report.volatility_triggered = volatility();
+      current_health = 0;
+    } else {
+      damage_report.damage_applied = damage;
+      current_health -= damage;
+    }
   }
+  return damage_report;
 }
 
 int Component::mass() const {
@@ -26,10 +33,6 @@ int Component::volatility() const {
 
 int Component::health() const {
   return current_health;
-}
-
-int Component::damage_applied() const {
-  return current_damage_applied;
 }
 
 bool Component::alive() const {

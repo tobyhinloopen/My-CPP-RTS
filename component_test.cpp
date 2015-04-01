@@ -15,26 +15,32 @@ TEST_CASE("Component") {
   REQUIRE(!component.dead());
 
   SECTION("applying some damage") {
-    component.apply_damage(10);
+    DamageReport damage_report = component.apply_damage(10);
 
     REQUIRE(component.health() == 30);
     REQUIRE(component.alive());
     REQUIRE(!component.dead());
+    REQUIRE(damage_report.damage_applied == 10);
+    REQUIRE(damage_report.volatility_triggered == 0);
   }
 
   SECTION("applying fatal damage") {
-    component.apply_damage(40);
+    DamageReport damage_report = component.apply_damage(40);
 
     REQUIRE(component.health() == 0);
     REQUIRE(!component.alive());
     REQUIRE(component.dead());
+    REQUIRE(damage_report.damage_applied == 40);
+    REQUIRE(damage_report.volatility_triggered == 40);
   }
 
   SECTION("applying more damage than health") {
-    component.apply_damage(50);
+    DamageReport damage_report = component.apply_damage(50);
 
     REQUIRE(component.health() == 0);
     REQUIRE(!component.alive());
     REQUIRE(component.dead());
+    REQUIRE(damage_report.damage_applied == 40);
+    REQUIRE(damage_report.volatility_triggered == 40);
   }
 }
