@@ -5,7 +5,7 @@ using namespace std;
 DamageReport damage_each_component(const shared_ptr<const vector<shared_ptr<Component>>> components, int damage);
 
 UnitDamageManager::UnitDamageManager(const shared_ptr<const vector<shared_ptr<Component>>> components)
-  : components(components)
+  : Componentable(components)
 {}
 
 DamageReport UnitDamageManager::apply_damage(const int damage) {
