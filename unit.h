@@ -16,7 +16,7 @@ public:
   bool alive() const;
   bool dead() const;
 private:
+  const shared_ptr<const vector<shared_ptr<Component>>> components;
   const int _initial_health;
   UnitDamageManager unit_damage_manager;
-  const shared_ptr<const vector<shared_ptr<Component>>> components;
 };
