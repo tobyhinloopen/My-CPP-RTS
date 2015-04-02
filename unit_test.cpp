@@ -32,7 +32,7 @@ TEST_CASE("Unit") {
   }
 
   SECTION("Applying major damage") {
-    DamageReport damage_report = unit.apply_damage(100);
+    unit.apply_damage(100);
     REQUIRE(unit.health() == 0);
     REQUIRE(!unit.alive());
     REQUIRE(unit.dead());
