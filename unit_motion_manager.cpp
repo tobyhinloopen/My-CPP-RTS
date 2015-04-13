@@ -5,5 +5,8 @@ Componentable(components) {
 }
 
 Force UnitMotionManager::force() const {
-  return Force();
+  Force force;
+  for(const auto component : *components)
+    force += component->force();
+  return force;
 }
