@@ -18,5 +18,5 @@ public:
   int complexity() const;
   shared_ptr<vector<shared_ptr<Component>>> components() const;
 private:
-  vector<ComponentTemplate> component_templates;
+  vector<ComponentTemplate> _component_templates;
 };

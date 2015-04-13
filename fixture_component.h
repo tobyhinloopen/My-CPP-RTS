@@ -10,7 +10,7 @@ public:
   virtual Force force() const;
   void force(Force force);
 private:
-  int current_mass;
-  int current_volatility;
-  Force current_force;
+  int _mass;
+  int _volatility;
+  Force _force;
 };

@@ -13,5 +13,5 @@ public:
   bool alive() const;
   bool dead() const;
 private:
-  int current_health;
+  int _health;
 };

@@ -1,5 +1,7 @@
 #import "force.h"
 
+Force::Force(short x, short y): x(x), y(y) {}
+
 Force::Force(): x(0), y(0) {}
 
 bool Force::none() const {

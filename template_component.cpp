@@ -2,13 +2,13 @@
 
 TemplateComponent::TemplateComponent(ComponentTemplate component_template):
 Component(component_template.health),
-component_template(component_template) {
+_component_template(component_template) {
 }
 
 int TemplateComponent::mass() const {
-  return component_template.mass;
+  return _component_template.mass;
 }
 
 int TemplateComponent::volatility() const {
-  return component_template.volatility;
+  return _component_template.volatility;
 }

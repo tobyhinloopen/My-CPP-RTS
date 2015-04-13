@@ -3,23 +3,19 @@
 
 using namespace std;
 
-Component::Component(int health):
-current_health(health) {
-}
-
-Component::~Component() {
-}
+Component::Component(int health): _health(health) {}
+Component::~Component() {}
 
 DamageReport Component::apply_damage(int damage) {
   DamageReport damage_report;
   if(alive()) {
     if(damage >= health()) {
-      damage_report.damage_applied = current_health;
+      damage_report.damage_applied = _health;
       damage_report.volatility_triggered = volatility();
-      current_health = 0;
+      _health = 0;
     } else {
       damage_report.damage_applied = damage;
-      current_health -= damage;
+      _health -= damage;
     }
   }
   return damage_report;
@@ -38,7 +34,7 @@ Force Component::force() const {
 }
 
 int Component::health() const {
-  return current_health;
+  return _health;
 }
 
 bool Component::alive() const {

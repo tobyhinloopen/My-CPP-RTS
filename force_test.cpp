@@ -2,29 +2,35 @@
 #import "force.h"
 
 TEST_CASE("Force") {
-  Force force;
+  SECTION("Default initializer") {
+    Force force;
 
-  REQUIRE(force.none());
-  REQUIRE(force.x == 0);
-  REQUIRE(force.y == 0);
+    REQUIRE(force.none());
+    REQUIRE(force.x == 0);
+    REQUIRE(force.y == 0);
+  }
+
+  SECTION("Initializer with 2 attributes") {
+    Force intitializer_force(1, 2);
+
+    REQUIRE(intitializer_force.any());
+    REQUIRE(intitializer_force.x == 1);
+    REQUIRE(intitializer_force.y == 2);
+  }
 
   SECTION("With any force") {
-    force.x = 1;
-    force.y = 1;
+    Force force(1, 1);
 
     REQUIRE(!force.none());
     REQUIRE(force.any());
   }
 
   SECTION("Adding forces") {
-    Force force2;
-    force2.x = 10;
+    Force force_a(10, 10);
+    Force force_b(10, 0);
+    force_a += force_b;
 
-    force.x = 10;
-    force.y = 10;
-    force += force2;
-
-    REQUIRE(force.x == 20);
-    REQUIRE(force.y == 10);
+    REQUIRE(force_a.x == 20);
+    REQUIRE(force_a.y == 10);
   }
 }

@@ -7,5 +7,5 @@ public:
   virtual int mass() const;
   virtual int volatility() const;
 private:
-  const ComponentTemplate component_template;
+  const ComponentTemplate _component_template;
 };
