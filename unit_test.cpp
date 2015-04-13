@@ -1,22 +1,23 @@
 #import "catch.h"
 #import "unit.h"
-#import "unit_template.h"
-#import "component_template.h"
+#import "fixture_component.h"
+#import "component.h"
+#include <memory>
+#include <vector>
+
+using namespace std;
 
 TEST_CASE("Unit") {
-  ComponentTemplate volatile_thing;
-  volatile_thing.health = 5;
-  volatile_thing.volatility = 10;
+  auto though_component = make_shared<Component>(25);
 
-  ComponentTemplate thougher_thing;
-  thougher_thing.health = 25;
-  thougher_thing.volatility = 0;
+  auto volatile_component = make_shared<FixtureComponent>(5);
+  volatile_component->volatility(10);
 
-  UnitTemplate unit_template;
-  unit_template.add(volatile_thing);
-  unit_template.add(thougher_thing);
+  auto components = make_shared<vector<shared_ptr<Component>>>();
+  components->push_back(volatile_component);
+  components->push_back(though_component);
 
-  Unit unit(unit_template.components());
+  Unit unit(components);
 
   REQUIRE(unit.health() == 30);
   REQUIRE(unit.initial_health() == 30);
