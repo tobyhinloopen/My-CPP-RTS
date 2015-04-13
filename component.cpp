@@ -3,15 +3,17 @@
 
 using namespace std;
 
-Component::Component(ComponentTemplate component_template)
-  : component_template(component_template)
-  , current_health(component_template.health)
-{}
+Component::Component(int health):
+current_health(health) {
+}
+
+Component::~Component() {
+}
 
 DamageReport Component::apply_damage(int damage) {
   DamageReport damage_report;
   if(alive()) {
-    if(damage >= current_health) {
+    if(damage >= health()) {
       damage_report.damage_applied = current_health;
       damage_report.volatility_triggered = volatility();
       current_health = 0;
@@ -24,11 +26,15 @@ DamageReport Component::apply_damage(int damage) {
 }
 
 int Component::mass() const {
-  return component_template.mass;
+  return 0;
 }
 
 int Component::volatility() const {
-  return component_template.volatility;
+  return 0;
+}
+
+Force Component::force() const {
+  return Force();
 }
 
 int Component::health() const {

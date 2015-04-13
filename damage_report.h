@@ -1,7 +1,9 @@
+#import "damage.h"
+
 class DamageReport {
 public:
   DamageReport();
   DamageReport & operator+=(const DamageReport & other);
-  int damage_applied;
-  int volatility_triggered;
+  Damage damage_applied;
+  Damage volatility_triggered;
 };

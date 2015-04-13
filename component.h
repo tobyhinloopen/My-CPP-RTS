@@ -1,16 +1,17 @@
-#import "component_template.h"
 #import "damage_report.h"
+#import "force.h"
 
 class Component {
 public:
-  Component(ComponentTemplate component_template);
-  DamageReport apply_damage(int damage);
-  int mass() const;
+  Component(int health);
+  virtual ~Component();
+  virtual DamageReport apply_damage(int damage);
+  virtual int mass() const;
+  virtual int volatility() const;
+  virtual Force force() const;
   int health() const;
-  int volatility() const;
   bool alive() const;
   bool dead() const;
 private:
-  const ComponentTemplate component_template;
   int current_health;
 };

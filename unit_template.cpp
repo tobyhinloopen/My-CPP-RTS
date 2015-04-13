@@ -1,4 +1,5 @@
 #import "unit_template.h"
+#import "template_component.h"
 
 using namespace std;
 
@@ -12,7 +13,7 @@ void UnitTemplate::add(const ComponentTemplate & component_template) {
 shared_ptr<vector<shared_ptr<Component>>> UnitTemplate::components() const {
   auto components = make_shared<vector<shared_ptr<Component>>>();
   for(const auto component_template : component_templates)
-    components->push_back(make_shared<Component>(component_template));
+    components->push_back(make_shared<TemplateComponent>(component_template));
   return components;
 }
 

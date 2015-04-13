@@ -1,6 +1,7 @@
 #import "catch.h"
 #import "unit_health_manager.h"
 #import "component_template.h"
+#import "template_component.h"
 #import "component.h"
 #import <vector>
 
@@ -10,8 +11,8 @@ TEST_CASE("UnitHealthManager") {
   ComponentTemplate thing_template;
   thing_template.health = 10;
 
-  auto thing_a = make_shared<Component>(thing_template);
-  auto thing_b = make_shared<Component>(thing_template);
+  auto thing_a = make_shared<TemplateComponent>(thing_template);
+  auto thing_b = make_shared<TemplateComponent>(thing_template);
 
   auto components = make_shared<vector<shared_ptr<Component>>>();
   components->push_back(thing_a);

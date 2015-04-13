@@ -2,6 +2,7 @@
 #import "unit_damage_manager.h"
 #import "component_template.h"
 #import "damage_report.h"
+#import "template_component.h"
 #import "component.h"
 #import <vector>
 
@@ -12,13 +13,13 @@ TEST_CASE("UnitDamageManager") {
   volatile_thing_template.health = 5;
   volatile_thing_template.volatility = 10;
 
-  auto volatile_thing = make_shared<Component>(volatile_thing_template);
+  auto volatile_thing = make_shared<TemplateComponent>(volatile_thing_template);
 
   ComponentTemplate though_thing_template;
   though_thing_template.health = 25;
   though_thing_template.volatility = 0;
 
-  auto though_thing = make_shared<Component>(though_thing_template);
+  auto though_thing = make_shared<TemplateComponent>(though_thing_template);
 
   auto components = make_shared<vector<shared_ptr<Component>>>();
   components->push_back(volatile_thing);
