@@ -15,7 +15,7 @@ test:
 	dist/rts_game_test
 
 check:
-	cppcheck cppcheck -Iinclude --std=c++11 -q --enable=all .
+	cppcheck -Iinclude --std=c++11 -q --enable=all .
 
 watch:
 	clear

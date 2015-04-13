@@ -2,8 +2,8 @@
 #import "unit.h"
 #import "fixture_component.h"
 #import "component.h"
-#include <memory>
-#include <vector>
+#import <memory>
+#import <vector>
 
 using namespace std;
 
