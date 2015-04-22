@@ -1,2 +1,4 @@
-dist/
-
+main
+test
+*.o
+.*depend

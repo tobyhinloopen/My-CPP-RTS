@@ -1,23 +1,37 @@
-.SILENT:
-default: all
+CXX=g++
+CPPFLAGS=-Wall -Wextra -std=c++11 -Iinclude
+LDFLAGS=
+LDLIBS=
 
-all:
-	g++ -Wall -Wextra -std=c++11 -Iinclude $(shell find . -name "*.cpp" -not -path "./support/*" -not -name "*test.cpp") -o dist/rts_game_cpp
+TEST_SRCS=$(shell find . -name "*.cpp" -not -name "main.cpp")
+TEST_OBJS=$(subst .cpp,.o,$(TEST_SRCS))
 
-start: all
-	dist/rts_game_cpp
+MAIN_SRCS=$(shell find . -name "*.cpp" -not -path "./support/*" -not -name "*test.cpp")
+MAIN_OBJS=$(subst .cpp,.o,$(MAIN_SRCS))
 
-clear:
-	clear
+all: test main
 
-test:
-	g++ -Wall -Wextra -std=c++11 -Iinclude $(shell find . -name "*.cpp" -not -name "main.cpp") -o dist/rts_game_test
-	dist/rts_game_test
+main: $(MAIN_OBJS)
+	$(CXX) $(LDFLAGS) -o main $(MAIN_OBJS) $(LDLIBS)
 
-check:
-	cppcheck -Iinclude --std=c++11 -q --enable=all .
+test: $(TEST_OBJS)
+	$(CXX) $(LDFLAGS) -o test $(TEST_OBJS) $(LDLIBS)
 
-watch:
-	clear
-	make test
-	find *.cpp *.h | entr make clear test check
+depend: .main_depend .test_depend
+
+.main_depend: $(MAIN_SRCS)
+	rm -f ./.main_depend
+	$(CXX) $(CPPFLAGS) -MM $^>>./.main_depend
+
+.test_depend: $(TEST_SRCS)
+	rm -f ./.test_depend
+	$(CXX) $(CPPFLAGS) -MM $^>>./.test_depend
+
+clean:
+	rm -f $(TEST_OBJS) $(MAIN_OBJS)
+
+dist-clean: clean
+	$(RM) *~ .main_depend .test_depend
+
+include .test_depend
+include .main_depend
