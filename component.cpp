@@ -1,5 +1,4 @@
 #import "component.h"
-#import <iostream>
 
 using namespace std;
 
