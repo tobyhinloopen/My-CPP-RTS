@@ -11,7 +11,7 @@ TEST_CASE("Unit") {
   auto volatile_component = std::make_shared<FixtureComponent>(5);
   volatile_component->volatility(10);
 
-  auto components = std::make_shared<std::vector<std::shared_ptr<Component>>>();
+  auto components = std::make_shared<ComponentSet>();
   components->push_back(volatile_component);
   components->push_back(though_component);
 

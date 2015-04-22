@@ -7,8 +7,8 @@ void UnitTemplate::add(const ComponentTemplate & component_template) {
   _component_templates.push_back(component_template);
 }
 
-std::shared_ptr<std::vector<std::shared_ptr<Component>>> UnitTemplate::components() const {
-  auto components = std::make_shared<std::vector<std::shared_ptr<Component>>>();
+std::shared_ptr<ComponentSet> UnitTemplate::components() const {
+  auto components = std::make_shared<ComponentSet>();
   for(const auto component_template : _component_templates)
     components->push_back(std::make_shared<TemplateComponent>(component_template));
   return components;

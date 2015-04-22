@@ -3,6 +3,7 @@
 #import "reactor_template.h"
 #import "component_template.h"
 #import "component.h"
+#import "component_set.h"
 
 #import <vector>
 #import <memory>
@@ -14,7 +15,7 @@ public:
   int mass() const;
   int health() const;
   int complexity() const;
-  std::shared_ptr<std::vector<std::shared_ptr<Component>>> components() const;
+  std::shared_ptr<ComponentSet> components() const;
 private:
   std::vector<ComponentTemplate> _component_templates;
 };

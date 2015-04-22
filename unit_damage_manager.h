@@ -1,4 +1,5 @@
 #import "component.h"
+#import "component_set.h"
 #import "damage_report.h"
 #import "componentable.h"
 #import <vector>
@@ -6,7 +7,7 @@
 
 class UnitDamageManager : private virtual Componentable {
 public:
-  UnitDamageManager(const std::shared_ptr<const std::vector<std::shared_ptr<Component>>> components);
+  UnitDamageManager(const std::shared_ptr<const ComponentSet> components);
   DamageReport apply_damage(const int damage);
 private:
   Component & healthiest_component() const;

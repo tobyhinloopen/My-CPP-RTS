@@ -4,7 +4,7 @@
 #import <vector>
 
 TEST_CASE("UnitMotionManager") {
-  auto components = std::make_shared<std::vector<std::shared_ptr<Component>>>();
+  auto components = std::make_shared<ComponentSet>();
   UnitMotionManager unit_motion_manager(components);
 
   REQUIRE(unit_motion_manager.force().none());

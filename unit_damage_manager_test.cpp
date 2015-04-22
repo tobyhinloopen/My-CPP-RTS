@@ -19,7 +19,7 @@ TEST_CASE("UnitDamageManager") {
 
   auto though_thing = std::make_shared<TemplateComponent>(though_thing_template);
 
-  auto components = std::make_shared<std::vector<std::shared_ptr<Component>>>();
+  auto components = std::make_shared<ComponentSet>();
   components->push_back(volatile_thing);
   components->push_back(though_thing);
 

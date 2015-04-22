@@ -12,7 +12,7 @@ TEST_CASE("UnitHealthManager") {
   auto thing_a = std::make_shared<TemplateComponent>(thing_template);
   auto thing_b = std::make_shared<TemplateComponent>(thing_template);
 
-  auto components = std::make_shared<std::vector<std::shared_ptr<Component>>>();
+  auto components = std::make_shared<ComponentSet>();
   components->push_back(thing_a);
   components->push_back(thing_b);
 
