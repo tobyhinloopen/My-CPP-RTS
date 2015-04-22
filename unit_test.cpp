@@ -5,15 +5,13 @@
 #import <memory>
 #import <vector>
 
-using namespace std;
-
 TEST_CASE("Unit") {
-  auto though_component = make_shared<Component>(25);
+  auto though_component = std::make_shared<Component>(25);
 
-  auto volatile_component = make_shared<FixtureComponent>(5);
+  auto volatile_component = std::make_shared<FixtureComponent>(5);
   volatile_component->volatility(10);
 
-  auto components = make_shared<vector<shared_ptr<Component>>>();
+  auto components = std::make_shared<std::vector<std::shared_ptr<Component>>>();
   components->push_back(volatile_component);
   components->push_back(though_component);
 

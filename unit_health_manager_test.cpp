@@ -5,16 +5,14 @@
 #import "component.h"
 #import <vector>
 
-using namespace std;
-
 TEST_CASE("UnitHealthManager") {
   ComponentTemplate thing_template;
   thing_template.health = 10;
 
-  auto thing_a = make_shared<TemplateComponent>(thing_template);
-  auto thing_b = make_shared<TemplateComponent>(thing_template);
+  auto thing_a = std::make_shared<TemplateComponent>(thing_template);
+  auto thing_b = std::make_shared<TemplateComponent>(thing_template);
 
-  auto components = make_shared<vector<shared_ptr<Component>>>();
+  auto components = std::make_shared<std::vector<std::shared_ptr<Component>>>();
   components->push_back(thing_a);
   components->push_back(thing_b);
 

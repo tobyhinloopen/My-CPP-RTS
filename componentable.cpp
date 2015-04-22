@@ -1,5 +1,5 @@
 #import "componentable.h"
 
-Componentable::Componentable(const shared_ptr<const vector<shared_ptr<Component>>> components):
+Componentable::Componentable(const std::shared_ptr<const std::vector<std::shared_ptr<Component>>> components):
 components(components) {
 }

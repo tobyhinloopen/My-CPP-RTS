@@ -7,7 +7,7 @@
 
 class UnitMotionManager : private virtual Componentable {
 public:
-  UnitMotionManager(const shared_ptr<const vector<shared_ptr<Component>>> components);
+  UnitMotionManager(const std::shared_ptr<const std::vector<std::shared_ptr<Component>>> components);
   Force force() const;
   Velocity velocity() const;
   void update();

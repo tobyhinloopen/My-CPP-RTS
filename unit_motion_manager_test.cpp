@@ -3,17 +3,15 @@
 #import "fixture_component.h"
 #import <vector>
 
-using namespace std;
-
 TEST_CASE("UnitMotionManager") {
-  auto components = make_shared<vector<shared_ptr<Component>>>();
+  auto components = std::make_shared<std::vector<std::shared_ptr<Component>>>();
   UnitMotionManager unit_motion_manager(components);
 
   REQUIRE(unit_motion_manager.force().none());
   REQUIRE(unit_motion_manager.velocity().none());
 
   SECTION("Having a component with force") {
-    auto force_component = make_shared<FixtureComponent>(0);
+    auto force_component = std::make_shared<FixtureComponent>(0);
     force_component->force(Force(1, 2));
     components->push_back(force_component);
 

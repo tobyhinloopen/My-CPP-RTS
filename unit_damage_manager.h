@@ -4,11 +4,9 @@
 #import <vector>
 #import <memory>
 
-using namespace std;
-
 class UnitDamageManager : private virtual Componentable {
 public:
-  UnitDamageManager(const shared_ptr<const vector<shared_ptr<Component>>> components);
+  UnitDamageManager(const std::shared_ptr<const std::vector<std::shared_ptr<Component>>> components);
   DamageReport apply_damage(const int damage);
 private:
   Component & healthiest_component() const;

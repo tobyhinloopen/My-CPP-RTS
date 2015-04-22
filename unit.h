@@ -5,10 +5,8 @@
 #import <vector>
 #import <memory>
 
-using namespace std;
-
 class Unit : private virtual Componentable, public UnitHealthManager, public UnitDamageManager {
 public:
-  Unit(const shared_ptr<const vector<shared_ptr<Component>>> components);
+  Unit(const std::shared_ptr<const std::vector<std::shared_ptr<Component>>> components);
   int mass() const;
 };

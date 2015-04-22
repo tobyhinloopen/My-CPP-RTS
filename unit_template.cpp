@@ -1,18 +1,16 @@
 #import "unit_template.h"
 #import "template_component.h"
 
-using namespace std;
-
 UnitTemplate::UnitTemplate() {}
 
 void UnitTemplate::add(const ComponentTemplate & component_template) {
   _component_templates.push_back(component_template);
 }
 
-shared_ptr<vector<shared_ptr<Component>>> UnitTemplate::components() const {
-  auto components = make_shared<vector<shared_ptr<Component>>>();
+std::shared_ptr<std::vector<std::shared_ptr<Component>>> UnitTemplate::components() const {
+  auto components = std::make_shared<std::vector<std::shared_ptr<Component>>>();
   for(const auto component_template : _component_templates)
-    components->push_back(make_shared<TemplateComponent>(component_template));
+    components->push_back(std::make_shared<TemplateComponent>(component_template));
   return components;
 }
 

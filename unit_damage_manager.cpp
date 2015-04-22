@@ -1,10 +1,8 @@
 #import "unit_damage_manager.h"
 
-using namespace std;
+DamageReport damage_each_component(const std::shared_ptr<const std::vector<std::shared_ptr<Component>>> components, int damage);
 
-DamageReport damage_each_component(const shared_ptr<const vector<shared_ptr<Component>>> components, int damage);
-
-UnitDamageManager::UnitDamageManager(const shared_ptr<const vector<shared_ptr<Component>>> components)
+UnitDamageManager::UnitDamageManager(const std::shared_ptr<const std::vector<std::shared_ptr<Component>>> components)
   : Componentable(components)
 {}
 
@@ -48,7 +46,7 @@ int UnitDamageManager::alive_components_count() const {
   return alive_components_count;
 }
 
-DamageReport damage_each_component(const shared_ptr<const vector<shared_ptr<Component>>> components, int damage) {
+DamageReport damage_each_component(const std::shared_ptr<const std::vector<std::shared_ptr<Component>>> components, int damage) {
   DamageReport damage_report;
   for(const auto component : *components)
     damage_report += component->apply_damage(damage);

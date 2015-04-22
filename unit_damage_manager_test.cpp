@@ -6,22 +6,20 @@
 #import "component.h"
 #import <vector>
 
-using namespace std;
-
 TEST_CASE("UnitDamageManager") {
   ComponentTemplate volatile_thing_template;
   volatile_thing_template.health = 5;
   volatile_thing_template.volatility = 10;
 
-  auto volatile_thing = make_shared<TemplateComponent>(volatile_thing_template);
+  auto volatile_thing = std::make_shared<TemplateComponent>(volatile_thing_template);
 
   ComponentTemplate though_thing_template;
   though_thing_template.health = 25;
   though_thing_template.volatility = 0;
 
-  auto though_thing = make_shared<TemplateComponent>(though_thing_template);
+  auto though_thing = std::make_shared<TemplateComponent>(though_thing_template);
 
-  auto components = make_shared<vector<shared_ptr<Component>>>();
+  auto components = std::make_shared<std::vector<std::shared_ptr<Component>>>();
   components->push_back(volatile_thing);
   components->push_back(though_thing);
 

@@ -1,6 +1,6 @@
 #import "unit_motion_manager.h"
 
-UnitMotionManager::UnitMotionManager(const shared_ptr<const vector<shared_ptr<Component>>> components) :
+UnitMotionManager::UnitMotionManager(const std::shared_ptr<const std::vector<std::shared_ptr<Component>>> components) :
 Componentable(components),
 _velocity(Velocity(0, 0)) {
 }

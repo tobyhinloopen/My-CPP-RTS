@@ -1,7 +1,5 @@
 #import "component.h"
 
-using namespace std;
-
 Component::Component(int health): _health(health) {}
 Component::~Component() {}
 

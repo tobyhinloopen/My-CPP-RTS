@@ -1,8 +1,6 @@
 #import "unit_health_manager.h"
 
-using namespace std;
-
-UnitHealthManager::UnitHealthManager(const shared_ptr<const vector<shared_ptr<Component>>> components):
+UnitHealthManager::UnitHealthManager(const std::shared_ptr<const std::vector<std::shared_ptr<Component>>> components):
 Componentable(components),
 _initial_health(health_for_components(components)) {
 }
@@ -23,7 +21,7 @@ bool UnitHealthManager::dead() const {
   return health() == 0;
 }
 
-int UnitHealthManager::health_for_components(const shared_ptr<const vector<shared_ptr<Component>>> components) {
+int UnitHealthManager::health_for_components(const std::shared_ptr<const std::vector<std::shared_ptr<Component>>> components) {
   int health = 0;
   for(const auto component : *components)
     health += component->health();

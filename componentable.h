@@ -2,10 +2,8 @@
 #import <vector>
 #import "component.h"
 
-using namespace std;
-
 class Componentable {
 protected:
-  Componentable(const shared_ptr<const vector<shared_ptr<Component>>> components);
-  const shared_ptr<const vector<shared_ptr<Component>>> components;
+  Componentable(const std::shared_ptr<const std::vector<std::shared_ptr<Component>>> components);
+  const std::shared_ptr<const std::vector<std::shared_ptr<Component>>> components;
 };
