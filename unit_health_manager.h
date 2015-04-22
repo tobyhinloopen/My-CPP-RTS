@@ -1,5 +1,4 @@
 #import "componentable.h"
-#import "component_set.h"
 
 class UnitHealthManager : private virtual Componentable {
 public:

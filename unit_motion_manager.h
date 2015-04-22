@@ -1,10 +1,6 @@
 #import "componentable.h"
-#import "component.h"
-#import "component_set.h"
 #import "velocity.h"
 #import "force.h"
-#import <vector>
-#import <memory>
 
 class UnitMotionManager : private virtual Componentable {
 public:

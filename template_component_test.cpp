@@ -1,5 +1,4 @@
 #import "catch.h"
-#import "component_template.h"
 #import "template_component.h"
 #import "support/component_template_factory.h"
 

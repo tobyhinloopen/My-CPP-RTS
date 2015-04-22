@@ -1,9 +1,6 @@
 #import "catch.h"
 #import "unit_health_manager.h"
-#import "component_template.h"
 #import "template_component.h"
-#import "component.h"
-#import <vector>
 
 TEST_CASE("UnitHealthManager") {
   ComponentTemplate thing_template;

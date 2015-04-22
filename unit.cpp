@@ -1,8 +1,4 @@
 #import "unit.h"
-#import "damage_report.h"
-#import <iostream>
-
-int health_for_components(const std::shared_ptr<const ComponentSet>);
 
 Unit::Unit(const std::shared_ptr<const ComponentSet> components):
 Componentable(components),

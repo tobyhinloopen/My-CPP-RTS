@@ -1,7 +1,6 @@
 #import "catch.h"
 #import "unit_motion_manager.h"
 #import "fixture_component.h"
-#import <vector>
 
 TEST_CASE("UnitMotionManager") {
   auto components = std::make_shared<ComponentSet>();

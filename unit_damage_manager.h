@@ -1,9 +1,5 @@
-#import "component.h"
-#import "component_set.h"
 #import "damage_report.h"
 #import "componentable.h"
-#import <vector>
-#import <memory>
 
 class UnitDamageManager : private virtual Componentable {
 public:

@@ -1,9 +1,6 @@
 #import "catch.h"
 #import "unit.h"
 #import "fixture_component.h"
-#import "component.h"
-#import <memory>
-#import <vector>
 
 TEST_CASE("Unit") {
   auto though_component = std::make_shared<Component>(25);

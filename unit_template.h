@@ -1,12 +1,5 @@
-#import "weapon_template.h"
-#import "engine_template.h"
-#import "reactor_template.h"
-#import "component_template.h"
-#import "component.h"
 #import "component_set.h"
-
-#import <vector>
-#import <memory>
+#import "component_template.h"
 
 class UnitTemplate {
 public:

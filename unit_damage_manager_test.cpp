@@ -1,10 +1,6 @@
 #import "catch.h"
 #import "unit_damage_manager.h"
-#import "component_template.h"
-#import "damage_report.h"
 #import "template_component.h"
-#import "component.h"
-#import <vector>
 
 TEST_CASE("UnitDamageManager") {
   ComponentTemplate volatile_thing_template;

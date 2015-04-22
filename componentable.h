@@ -1,5 +1,3 @@
-#import <memory>
-#import <vector>
 #import "component.h"
 #import "component_set.h"
 
