@@ -8,7 +8,7 @@ public:
   int mass() const;
   int health() const;
   int complexity() const;
-  std::shared_ptr<ComponentSet> components() const;
+  std::unique_ptr<ComponentSet> create_components() const;
 private:
   std::vector<ComponentTemplate> _component_templates;
 };

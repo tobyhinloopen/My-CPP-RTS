@@ -17,8 +17,22 @@ TEST_CASE("UnitTemplate") {
     unit_template.add(component_template_factory.create_reactor_template());
 
     REQUIRE(unit_template.complexity() == 240);
-    REQUIRE(unit_template.mass() == 200);
     REQUIRE(unit_template.health() == 130);
-    REQUIRE(unit_template.components()->size() == 4);
+    REQUIRE(unit_template.mass() == 200);
+
+    auto created_components = unit_template.create_components();
+
+    REQUIRE(created_components->size() == 4);
+
+    int created_components_health_sum = 0;
+    int created_components_mass_sum = 0;
+
+    for(auto created_component : *created_components) {
+      created_components_health_sum += created_component->health();
+      created_components_mass_sum += created_component->mass();
+    }
+
+    REQUIRE(created_components_health_sum == 130);
+    REQUIRE(created_components_mass_sum == 200);
   }
 }
