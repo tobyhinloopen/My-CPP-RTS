@@ -1,2 +1,2 @@
-make test
+./make-clear-test-check
 find *.cpp *.h | entr ./make-clear-test-check
