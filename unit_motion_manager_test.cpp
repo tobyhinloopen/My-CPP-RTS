@@ -53,13 +53,13 @@ TEST_CASE("UnitMotionManager") {
 
     REQUIRE(unit_motion_manager.velocity().any());
     REQUIRE(unit_motion_manager.velocity().x == 5);
-    REQUIRE(unit_motion_manager.velocity().y == 10);
+    REQUIRE(unit_motion_manager.velocity().y == 5);
 
     unit_motion_manager.update_with_velocity_resistance(wind_resistance);
 
     REQUIRE(unit_motion_manager.velocity().any());
     REQUIRE(unit_motion_manager.velocity().x == 5);
-    REQUIRE(unit_motion_manager.velocity().y == 10);
+    REQUIRE(unit_motion_manager.velocity().y == 5);
   }
 
   // "Air" resistance should be added by adding a force which grows linearly with the velocity.
