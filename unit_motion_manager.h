@@ -8,6 +8,7 @@ public:
   Force force() const;
   Velocity velocity() const;
   void update();
+  void update_with_velocity_resistance(unsigned short velocity_resistance);
 private:
   Velocity _velocity;
 };

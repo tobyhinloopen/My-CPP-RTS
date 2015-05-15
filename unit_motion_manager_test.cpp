@@ -33,6 +33,33 @@ TEST_CASE("UnitMotionManager") {
     REQUIRE(unit_motion_manager.velocity().any());
     REQUIRE(unit_motion_manager.velocity().x == 2);
     REQUIRE(unit_motion_manager.velocity().y == 4);
+
+    for(int i(0); i<8; ++i)
+      unit_motion_manager.update();
+
+    REQUIRE(unit_motion_manager.velocity().any());
+    REQUIRE(unit_motion_manager.velocity().x == 10);
+    REQUIRE(unit_motion_manager.velocity().y == 20);
+  }
+
+  SECTION("Having a component with force with wind resistance") {
+    auto force_component = std::make_shared<FixtureComponent>(0);
+    force_component->force(Force(10, 10));
+    components->push_back(force_component);
+
+    unsigned int wind_resistance(1);
+
+    unit_motion_manager.update_with_velocity_resistance(wind_resistance);
+
+    REQUIRE(unit_motion_manager.velocity().any());
+    REQUIRE(unit_motion_manager.velocity().x == 5);
+    REQUIRE(unit_motion_manager.velocity().y == 10);
+
+    unit_motion_manager.update_with_velocity_resistance(wind_resistance);
+
+    REQUIRE(unit_motion_manager.velocity().any());
+    REQUIRE(unit_motion_manager.velocity().x == 5);
+    REQUIRE(unit_motion_manager.velocity().y == 10);
   }
 
   // "Air" resistance should be added by adding a force which grows linearly with the velocity.
