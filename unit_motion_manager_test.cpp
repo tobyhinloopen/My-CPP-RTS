@@ -47,7 +47,7 @@ TEST_CASE("unit_motion_manager") {
     force_component->force(force_t(10, 10));
     components->push_back(force_component);
 
-    unsigned int wind_resistance(1);
+    const force_magnitude_t wind_resistance(1);
 
     unit_motion_manager.update_with_velocity_resistance(wind_resistance);
 

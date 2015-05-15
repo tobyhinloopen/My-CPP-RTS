@@ -13,20 +13,11 @@ damage_report unit_damage_manager::apply_damage(const damage_t damage) {
   if(current_alive_components_count == 0)
     return report;
 
-  if(damage > current_alive_components_count)
-    report += damage_each_component(*components, damage / current_alive_components_count);
+  report += damage_each_component(*components, damage / current_alive_components_count);
 
-  current_alive_components_count = alive_components_count();
-  if(current_alive_components_count == 0)
-    return report;
-
-  auto damage_remaining = damage - report.damage_applied + report.volatility_triggered;
-  if(damage_remaining && damage_remaining < current_alive_components_count) {
-    report += healthiest_component().apply_damage(1);
-    damage_remaining = damage - report.damage_applied + report.volatility_triggered;
-  }
-  if(damage_remaining)
-    report += apply_damage(damage_remaining);
+  auto remaining_damage = damage - report.damage_applied + report.volatility_triggered;
+  if(remaining_damage > 0 && alive_components_count() > 0)
+    report += apply_damage(damage - report.damage_applied + report.volatility_triggered);
   return report;
 }
 

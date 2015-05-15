@@ -1,6 +1,8 @@
 #import "catch.h"
 #import "unit_damage_manager.h"
 #import "template_component.h"
+#import <sstream>
+#import <cmath>
 
 TEST_CASE("unit_damage_manager") {
   component_template volatile_thing_template;
@@ -42,12 +44,26 @@ TEST_CASE("unit_damage_manager") {
     REQUIRE(though_thing->health() == 10);
   }
 
-  SECTION("The remainder-damage applies to the healthiest component") {
-    damage_report report = unit_damage_manager.apply_damage(1);
+  SECTION("Applying decimal amount of damage") {
+    damage_report report = unit_damage_manager.apply_damage(3.2);
 
-    REQUIRE(report.damage_applied == 1);
+    REQUIRE(report.damage_applied == damage_t(3.2));
     REQUIRE(report.volatility_triggered == 0);
-    REQUIRE(volatile_thing->health() == 5);
-    REQUIRE(though_thing->health() == 24);
+    REQUIRE(volatile_thing->health() == damage_t(3.4));
+    REQUIRE(though_thing->health() == damage_t(23.4));
+  }
+
+  for(int i(1); i<20; i++) {
+    const damage_t damage_to_apply = pow(10.0, -i);
+    std::ostringstream stream;
+    stream << "Applying very minor amount of damage (" << damage_to_apply << ")";
+    SECTION(stream.str()) {
+      damage_report report = unit_damage_manager.apply_damage(damage_to_apply);
+
+      REQUIRE(report.damage_applied == damage_to_apply);
+      REQUIRE(report.volatility_triggered == 0);
+      REQUIRE(volatile_thing->health() == damage_t(5 - damage_to_apply/2));
+      REQUIRE(though_thing->health() == damage_t(25 - damage_to_apply/2));
+    }
   }
 }

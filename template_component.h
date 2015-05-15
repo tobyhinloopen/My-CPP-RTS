@@ -3,7 +3,7 @@
 
 class template_component : public component {
 public:
-  template_component(component_template component_template);
+  template_component(const component_template component_template);
   virtual mass_t mass() const;
   virtual volatility_t volatility() const;
 private:
