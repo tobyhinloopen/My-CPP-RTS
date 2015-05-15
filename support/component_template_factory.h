@@ -2,10 +2,10 @@
 #import "../engine_template.h"
 #import "../reactor_template.h"
 
-class ComponentTemplateFactory {
+class component_template_factory {
 public:
-  EngineTemplate create_engine_template();
-  WeaponTemplate create_laser_weapon_template();
-  WeaponTemplate create_cannon_weapon_template();
-  ReactorTemplate create_reactor_template();
+  engine_template create_engine_template();
+  weapon_template create_laser_weapon_template();
+  weapon_template create_cannon_weapon_template();
+  reactor_template create_reactor_template();
 };

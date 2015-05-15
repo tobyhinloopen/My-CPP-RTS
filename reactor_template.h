@@ -1,6 +1,6 @@
 #import "component_template.h"
 
-class ReactorTemplate : public ComponentTemplate {
+class reactor_template : public component_template {
 };
 
 // LightReactor:

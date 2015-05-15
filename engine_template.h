@@ -1,6 +1,6 @@
 #import "component_template.h"
 
-class EngineTemplate : public ComponentTemplate {
+class engine_template : public component_template {
 };
 
 // energy_consumption: 20

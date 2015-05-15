@@ -2,49 +2,49 @@
 #import "unit_motion_manager.h"
 #import "fixture_component.h"
 
-TEST_CASE("UnitMotionManager") {
-  auto components = std::make_shared<ComponentSet>();
-  UnitMotionManager unit_motion_manager(components);
+TEST_CASE("unit_motion_manager") {
+  auto components = std::make_shared<component_set>();
+  unit_motion_manager unit_motion_manager(components);
 
   REQUIRE(unit_motion_manager.force().none());
   REQUIRE(unit_motion_manager.velocity().none());
 
   SECTION("Having a component with force") {
-    auto force_component = std::make_shared<FixtureComponent>(0);
-    force_component->force(Force(1, 2));
+    auto force_component = std::make_shared<fixture_component>(0);
+    force_component->force(force_t(1.0, 2.0));
     components->push_back(force_component);
 
     REQUIRE(unit_motion_manager.force().any());
-    REQUIRE(unit_motion_manager.force().x == 1);
-    REQUIRE(unit_motion_manager.force().y == 2);
+    REQUIRE(unit_motion_manager.force().x == 1.0);
+    REQUIRE(unit_motion_manager.force().y == 2.0);
 
     REQUIRE(unit_motion_manager.velocity().none());
-    REQUIRE(unit_motion_manager.velocity().x == 0);
-    REQUIRE(unit_motion_manager.velocity().y == 0);
+    REQUIRE(unit_motion_manager.velocity().x == 0.0);
+    REQUIRE(unit_motion_manager.velocity().y == 0.0);
 
     unit_motion_manager.update();
 
     REQUIRE(unit_motion_manager.velocity().any());
-    REQUIRE(unit_motion_manager.velocity().x == 1);
-    REQUIRE(unit_motion_manager.velocity().y == 2);
+    REQUIRE(unit_motion_manager.velocity().x == 1.0);
+    REQUIRE(unit_motion_manager.velocity().y == 2.0);
 
     unit_motion_manager.update();
 
     REQUIRE(unit_motion_manager.velocity().any());
-    REQUIRE(unit_motion_manager.velocity().x == 2);
-    REQUIRE(unit_motion_manager.velocity().y == 4);
+    REQUIRE(unit_motion_manager.velocity().x == 2.0);
+    REQUIRE(unit_motion_manager.velocity().y == 4.0);
 
     for(int i(0); i<8; ++i)
       unit_motion_manager.update();
 
     REQUIRE(unit_motion_manager.velocity().any());
-    REQUIRE(unit_motion_manager.velocity().x == 10);
-    REQUIRE(unit_motion_manager.velocity().y == 20);
+    REQUIRE(unit_motion_manager.velocity().x == 10.0);
+    REQUIRE(unit_motion_manager.velocity().y == 20.0);
   }
 
   SECTION("Having a component with force with wind resistance") {
-    auto force_component = std::make_shared<FixtureComponent>(0);
-    force_component->force(Force(10, 10));
+    auto force_component = std::make_shared<fixture_component>(0);
+    force_component->force(force_t(10, 10));
     components->push_back(force_component);
 
     unsigned int wind_resistance(1);
@@ -52,14 +52,14 @@ TEST_CASE("UnitMotionManager") {
     unit_motion_manager.update_with_velocity_resistance(wind_resistance);
 
     REQUIRE(unit_motion_manager.velocity().any());
-    REQUIRE(unit_motion_manager.velocity().x == 5);
-    REQUIRE(unit_motion_manager.velocity().y == 5);
+    REQUIRE(unit_motion_manager.velocity().x == 5.0);
+    REQUIRE(unit_motion_manager.velocity().y == 5.0);
 
     unit_motion_manager.update_with_velocity_resistance(wind_resistance);
 
     REQUIRE(unit_motion_manager.velocity().any());
-    REQUIRE(unit_motion_manager.velocity().x == 5);
-    REQUIRE(unit_motion_manager.velocity().y == 5);
+    REQUIRE(unit_motion_manager.velocity().x == 5.0);
+    REQUIRE(unit_motion_manager.velocity().y == 5.0);
   }
 
   // "Air" resistance should be added by adding a force which grows linearly with the velocity.

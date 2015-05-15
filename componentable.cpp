@@ -1,5 +1,5 @@
 #import "componentable.h"
 
-Componentable::Componentable(const std::shared_ptr<const ComponentSet> components):
+componentable::componentable(const std::shared_ptr<const component_set> components):
 components(components) {
 }

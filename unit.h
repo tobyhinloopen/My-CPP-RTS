@@ -1,8 +1,8 @@
 #import "unit_damage_manager.h"
 #import "unit_health_manager.h"
 
-class Unit : private virtual Componentable, public UnitHealthManager, public UnitDamageManager {
+class unit : private virtual componentable, public unit_health_manager, public unit_damage_manager {
 public:
-  Unit(const std::shared_ptr<const ComponentSet> components);
-  int mass() const;
+  unit(const std::shared_ptr<const component_set> components);
+  double mass() const;
 };

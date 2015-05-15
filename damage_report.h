@@ -1,9 +1,9 @@
-#import "damage.h"
+#import "types.h"
 
-class DamageReport {
+class damage_report {
 public:
-  DamageReport();
-  DamageReport & operator+=(const DamageReport & other);
-  Damage damage_applied;
-  Damage volatility_triggered;
+  damage_report();
+  damage_report & operator+=(const damage_report & other);
+  damage_t damage_applied;
+  damage_t volatility_triggered;
 };

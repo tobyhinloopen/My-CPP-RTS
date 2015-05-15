@@ -1,11 +1,11 @@
 #import "component.h"
 #import "component_template.h"
 
-class TemplateComponent : public Component {
+class template_component : public component {
 public:
-  TemplateComponent(ComponentTemplate component_template);
-  virtual int mass() const;
-  virtual int volatility() const;
+  template_component(component_template component_template);
+  virtual double mass() const;
+  virtual double volatility() const;
 private:
-  const ComponentTemplate _component_template;
+  const component_template _component_template;
 };

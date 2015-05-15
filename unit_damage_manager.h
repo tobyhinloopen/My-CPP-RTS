@@ -1,11 +1,11 @@
 #import "damage_report.h"
 #import "componentable.h"
 
-class UnitDamageManager : private virtual Componentable {
+class unit_damage_manager : private virtual componentable {
 public:
-  UnitDamageManager(const std::shared_ptr<const ComponentSet> components);
-  DamageReport apply_damage(const int damage);
+  unit_damage_manager(const std::shared_ptr<const component_set> components);
+  damage_report apply_damage(const double damage);
 private:
-  Component & healthiest_component() const;
+  component & healthiest_component() const;
   int alive_components_count() const;
 };

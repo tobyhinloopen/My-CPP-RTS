@@ -1,17 +1,18 @@
 #import "damage_report.h"
 #import "force.h"
+#import "types.h"
 
-class Component {
+class component {
 public:
-  Component(int health);
-  virtual ~Component();
-  virtual DamageReport apply_damage(int damage);
-  virtual int mass() const;
-  virtual int volatility() const;
-  virtual Force force() const;
-  int health() const;
+  component(const health_t health);
+  virtual ~component();
+  virtual damage_report apply_damage(const damage_t damage);
+  virtual mass_t mass() const;
+  virtual volatility_t volatility() const;
+  virtual force_t force() const;
+  health_t health() const;
   bool alive() const;
   bool dead() const;
 private:
-  int _health;
+  health_t _health;
 };

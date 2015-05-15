@@ -1,43 +1,43 @@
 #import "component.h"
 
-Component::Component(int health): _health(health) {}
-Component::~Component() {}
+component::component(const health_t health): _health(health) {}
+component::~component() {}
 
-DamageReport Component::apply_damage(int damage) {
-  DamageReport damage_report;
+damage_report component::apply_damage(const damage_t damage) {
+  damage_report report;
   if(alive()) {
     if(damage >= health()) {
-      damage_report.damage_applied = _health;
-      damage_report.volatility_triggered = volatility();
-      _health = 0;
+      report.damage_applied = _health;
+      report.volatility_triggered = volatility();
+      _health = 0.0;
     } else {
-      damage_report.damage_applied = damage;
+      report.damage_applied = damage;
       _health -= damage;
     }
   }
-  return damage_report;
+  return report;
 }
 
-int Component::mass() const {
-  return 0;
+mass_t component::mass() const {
+  return 0.0;
 }
 
-int Component::volatility() const {
-  return 0;
+volatility_t component::volatility() const {
+  return 0.0;
 }
 
-Force Component::force() const {
-  return Force();
+force_t component::force() const {
+  return force_t();
 }
 
-int Component::health() const {
+health_t component::health() const {
   return _health;
 }
 
-bool Component::alive() const {
-  return health() > 0;
+bool component::alive() const {
+  return health() > 0.0;
 }
 
-bool Component::dead() const {
+bool component::dead() const {
   return !alive();
 }

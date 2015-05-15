@@ -2,17 +2,17 @@
 #import "unit.h"
 #import "fixture_component.h"
 
-TEST_CASE("Unit") {
-  auto though_component = std::make_shared<Component>(25);
+TEST_CASE("unit") {
+  auto though_component = std::make_shared<component>(25);
 
-  auto volatile_component = std::make_shared<FixtureComponent>(5);
+  auto volatile_component = std::make_shared<fixture_component>(5);
   volatile_component->volatility(10);
 
-  auto components = std::make_shared<ComponentSet>();
+  auto components = std::make_shared<component_set>();
   components->push_back(volatile_component);
   components->push_back(though_component);
 
-  Unit unit(components);
+  unit unit(components);
 
   REQUIRE(unit.health() == 30);
   REQUIRE(unit.initial_health() == 30);

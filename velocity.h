@@ -1,8 +1,8 @@
-class Velocity {
+class velocity_t {
 public:
-  Velocity();
-  Velocity(short x, short y);
-  Velocity & operator+=(const Velocity & other);
+  velocity_t();
+  velocity_t(short x, short y);
+  velocity_t & operator+=(const velocity_t & other);
   bool any() const;
   bool none() const;
   short x;

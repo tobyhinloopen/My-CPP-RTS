@@ -1,16 +1,16 @@
 #import "component.h"
 
-class FixtureComponent : public Component {
+class fixture_component : public component {
 public:
-  FixtureComponent(int health);
-  virtual int mass() const;
-  void mass(int mass);
-  virtual int volatility() const;
-  void volatility(int volatility);
-  virtual Force force() const;
-  void force(Force force);
+  fixture_component(health_t health);
+  virtual mass_t mass() const;
+  void mass(mass_t mass);
+  virtual double volatility() const;
+  void volatility(volatility_t volatility);
+  virtual force_t force() const;
+  void force(force_t force);
 private:
-  int _mass;
-  int _volatility;
-  Force _force;
+  double _mass;
+  double _volatility;
+  force_t _force;
 };

@@ -1,13 +1,13 @@
 #import "componentable.h"
 
-class UnitHealthManager : private virtual Componentable {
+class unit_health_manager : private virtual componentable {
 public:
-  UnitHealthManager(const std::shared_ptr<const ComponentSet> components);
-  int initial_health() const;
-  int health() const;
+  unit_health_manager(const std::shared_ptr<const component_set> components);
+  double initial_health() const;
+  double health() const;
   bool dead() const;
   bool alive() const;
-  static int health_for_components(const std::shared_ptr<const ComponentSet> components);
+  static double health_for_components(const std::shared_ptr<const component_set> components);
 private:
-  const int _initial_health;
+  const double _initial_health;
 };

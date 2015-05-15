@@ -1,9 +1,9 @@
 #import "catch.h"
 #import "velocity.h"
 
-TEST_CASE("Velocity") {
+TEST_CASE("velocity_t") {
   SECTION("Default initializer") {
-    Velocity velocity;
+    velocity_t velocity;
 
     REQUIRE(velocity.none());
     REQUIRE(velocity.x == 0);
@@ -11,7 +11,7 @@ TEST_CASE("Velocity") {
   }
 
   SECTION("Initializer with 2 attributes") {
-    Velocity intitializer_velocity(1, 2);
+    velocity_t intitializer_velocity(1, 2);
 
     REQUIRE(intitializer_velocity.any());
     REQUIRE(intitializer_velocity.x == 1);
@@ -19,7 +19,7 @@ TEST_CASE("Velocity") {
   }
 
   SECTION("With any velocity") {
-    Velocity velocity(1, 1);
+    velocity_t velocity(1, 1);
 
     REQUIRE(!velocity.none());
     REQUIRE(velocity.any());

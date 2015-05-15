@@ -1,8 +1,9 @@
 #import "component.h"
 #import "component_set.h"
+#import <memory>
 
-class Componentable {
+class componentable {
 protected:
-  Componentable(const std::shared_ptr<const ComponentSet> components);
-  const std::shared_ptr<const ComponentSet> components;
+  componentable(const std::shared_ptr<const component_set> components);
+  const std::shared_ptr<const component_set> components;
 };

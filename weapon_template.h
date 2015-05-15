@@ -1,6 +1,6 @@
 #import "component_template.h"
 
-class WeaponTemplate : public ComponentTemplate {
+class weapon_template : public component_template {
 };
 
 // var SampleCannonWeaponTemplate = {

@@ -17,21 +17,16 @@ main: $(MAIN_OBJS)
 test: $(TEST_OBJS)
 	$(CXX) $(LDFLAGS) -o test $(TEST_OBJS) $(LDLIBS)
 
-depend: .main_depend .test_depend
+depend: .depend
 
-.main_depend: $(MAIN_SRCS)
-	rm -f ./.main_depend
-	$(CXX) $(CPPFLAGS) -MM $^>>./.main_depend
-
-.test_depend: $(TEST_SRCS)
-	rm -f ./.test_depend
-	$(CXX) $(CPPFLAGS) -MM $^>>./.test_depend
+.depend: $(MAIN_SRCS) $(TEST_SRCS)
+	rm -f .depend
+	$(CXX) $(CPPFLAGS) -MM $^>>.depend
 
 clean:
 	rm -f $(TEST_OBJS) $(MAIN_OBJS)
 
 dist-clean: clean
-	$(RM) *~ .main_depend .test_depend
+	$(RM) .depend
 
-include .test_depend
-include .main_depend
+include .depend

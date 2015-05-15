@@ -1,14 +1,14 @@
 #import "component_set.h"
 #import "component_template.h"
 
-class UnitTemplate {
+class unit_template {
 public:
-  UnitTemplate();
-  void add(const ComponentTemplate &);
-  int mass() const;
-  int health() const;
-  int complexity() const;
-  std::unique_ptr<ComponentSet> create_components() const;
+  unit_template();
+  void add(const component_template &);
+  double mass() const;
+  double health() const;
+  double complexity() const;
+  std::unique_ptr<component_set> create_components() const;
 private:
-  std::vector<ComponentTemplate> _component_templates;
+  std::vector<component_template> _component_templates;
 };

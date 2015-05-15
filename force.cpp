@@ -1,18 +1,18 @@
 #import "force.h"
 
-Force::Force(short x, short y): x(x), y(y) {}
+force_t::force_t(const double x, const double y): x(x), y(y) {}
 
-Force::Force(): x(0), y(0) {}
+force_t::force_t(): x(0.0), y(0.0) {}
 
-bool Force::none() const {
-  return x == 0 && y == 0;
+bool force_t::none() const {
+  return x == 0.0 && y == 0.0;
 }
 
-bool Force::any() const {
+bool force_t::any() const {
   return !none();
 }
 
-Force & Force::operator+=(const Force & other) {
+force_t & force_t::operator+=(const force_t & other) {
   x += other.x;
   y += other.y;
   return *this;

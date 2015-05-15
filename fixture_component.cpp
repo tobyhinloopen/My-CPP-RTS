@@ -1,29 +1,29 @@
 #import "fixture_component.h"
 
-FixtureComponent::FixtureComponent(int health): Component(health),
-_mass(0), _volatility(0), _force(Force()) {
+fixture_component::fixture_component(const health_t health):
+component(health), _mass(0.0), _volatility(0.0), _force() {
 }
 
-int FixtureComponent::mass() const {
+mass_t fixture_component::mass() const {
   return _mass;
 }
 
-void FixtureComponent::mass(int mass) {
+void fixture_component::mass(const mass_t mass) {
   _mass = mass;
 }
 
-Force FixtureComponent::force() const {
+force_t fixture_component::force() const {
   return _force;
 }
 
-void FixtureComponent::force(Force force) {
+void fixture_component::force(const force_t force) {
   _force = force;
 }
 
-int FixtureComponent::volatility() const {
+volatility_t fixture_component::volatility() const {
   return _volatility;
 }
 
-void FixtureComponent::volatility(int volatility) {
+void fixture_component::volatility(const volatility_t volatility) {
   _volatility = volatility;
 }

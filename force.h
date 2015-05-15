@@ -1,10 +1,10 @@
-class Force {
+class force_t {
 public:
-  Force();
-  Force(short x, short y);
-  Force & operator+=(const Force & other);
+  force_t();
+  force_t(const double x, const double y);
+  force_t & operator+=(const force_t & other);
   bool any() const;
   bool none() const;
-  short x;
-  short y;
+  double x;
+  double y;
 };

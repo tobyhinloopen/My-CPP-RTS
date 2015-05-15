@@ -2,52 +2,52 @@
 #import "unit_damage_manager.h"
 #import "template_component.h"
 
-TEST_CASE("UnitDamageManager") {
-  ComponentTemplate volatile_thing_template;
-  volatile_thing_template.health = 5;
-  volatile_thing_template.volatility = 10;
+TEST_CASE("unit_damage_manager") {
+  component_template volatile_thing_template;
+  volatile_thing_template.health = 5.0;
+  volatile_thing_template.volatility = 10.0;
 
-  auto volatile_thing = std::make_shared<TemplateComponent>(volatile_thing_template);
+  auto volatile_thing = std::make_shared<template_component>(volatile_thing_template);
 
-  ComponentTemplate though_thing_template;
-  though_thing_template.health = 25;
-  though_thing_template.volatility = 0;
+  component_template though_thing_template;
+  though_thing_template.health = 25.0;
+  though_thing_template.volatility = 0.0;
 
-  auto though_thing = std::make_shared<TemplateComponent>(though_thing_template);
+  auto though_thing = std::make_shared<template_component>(though_thing_template);
 
-  auto components = std::make_shared<ComponentSet>();
+  auto components = std::make_shared<component_set>();
   components->push_back(volatile_thing);
   components->push_back(though_thing);
 
-  UnitDamageManager unit_damage_manager(components);
+  unit_damage_manager unit_damage_manager(components);
 
-  REQUIRE(volatile_thing->health() == 5);
-  REQUIRE(though_thing->health() == 25);
+  REQUIRE(volatile_thing->health() == 5.0);
+  REQUIRE(though_thing->health() == 25.0);
 
   SECTION("Applying minor damage to each component") {
-    DamageReport damage_report = unit_damage_manager.apply_damage(8);
+    damage_report report = unit_damage_manager.apply_damage(8.0);
 
-    REQUIRE(volatile_thing->health() == 1);
-    REQUIRE(though_thing->health() == 21);
-    REQUIRE(damage_report.damage_applied == 8);
-    REQUIRE(damage_report.volatility_triggered == 0);
+    REQUIRE(volatile_thing->health() == 1.0);
+    REQUIRE(though_thing->health() == 21.0);
+    REQUIRE(report.damage_applied == 8.0);
+    REQUIRE(report.volatility_triggered == 0.0);
   }
 
   SECTION("Applying damage just enough to trigger volatility") {
-    DamageReport damage_report = unit_damage_manager.apply_damage(10);
+    damage_report report = unit_damage_manager.apply_damage(10.0);
 
-    REQUIRE(damage_report.damage_applied == 20);
-    REQUIRE(damage_report.volatility_triggered == 10);
+    REQUIRE(report.damage_applied == 20.0);
+    REQUIRE(report.volatility_triggered == 10.0);
     REQUIRE(volatile_thing->dead() == true);
-    REQUIRE(though_thing->health() == 10);
+    REQUIRE(though_thing->health() == 10.0);
   }
 
   SECTION("The remainder-damage applies to the healthiest component") {
-    DamageReport damage_report = unit_damage_manager.apply_damage(1);
+    damage_report report = unit_damage_manager.apply_damage(1.0);
 
-    REQUIRE(damage_report.damage_applied == 1);
-    REQUIRE(damage_report.volatility_triggered == 0);
-    REQUIRE(volatile_thing->health() == 5);
-    REQUIRE(though_thing->health() == 24);
+    REQUIRE(report.damage_applied == 1.0);
+    REQUIRE(report.volatility_triggered == 0.0);
+    REQUIRE(volatile_thing->health() == 5.0);
+    REQUIRE(though_thing->health() == 24.0);
   }
 }

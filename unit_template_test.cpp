@@ -2,9 +2,9 @@
 #import "unit_template.h"
 #import "support/component_template_factory.h"
 
-TEST_CASE("UnitTemplate") {
-  ComponentTemplateFactory component_template_factory;
-  UnitTemplate unit_template;
+TEST_CASE("unit_template") {
+  component_template_factory component_template_factory;
+  unit_template unit_template;
 
   REQUIRE(unit_template.complexity() == 0);
   REQUIRE(unit_template.mass() == 0);
