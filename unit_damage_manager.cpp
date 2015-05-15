@@ -2,22 +2,23 @@
 
 damage_report damage_each_component(const component_set & components, const damage_t damage);
 
-unit_damage_manager::unit_damage_manager(const std::shared_ptr<const component_set> components)
-  : componentable(components)
-{}
+unit_damage_manager::unit_damage_manager(const std::shared_ptr<const component_set> components):
+componentable(components) {
+}
 
 damage_report unit_damage_manager::apply_damage(const damage_t damage) {
-  damage_report report;
+  if(damage <= 0)
+    return damage_report();
 
   auto current_alive_components_count = alive_components_count();
   if(current_alive_components_count == 0)
-    return report;
+    return damage_report();
 
-  report += damage_each_component(*components, damage / current_alive_components_count);
+  auto report = damage_each_component(*components, damage / current_alive_components_count);
 
   auto remaining_damage = damage - report.damage_applied + report.volatility_triggered;
-  if(remaining_damage > 0 && alive_components_count() > 0)
-    report += apply_damage(damage - report.damage_applied + report.volatility_triggered);
+  report += apply_damage(remaining_damage);
+
   return report;
 }
 
