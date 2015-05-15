@@ -5,10 +5,10 @@ component(component_template.health),
 _component_template(component_template) {
 }
 
-double template_component::mass() const {
+mass_t template_component::mass() const {
   return _component_template.mass;
 }
 
-double template_component::volatility() const {
+volatility_t template_component::volatility() const {
   return _component_template.volatility;
 }

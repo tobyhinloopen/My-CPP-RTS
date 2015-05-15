@@ -11,35 +11,35 @@ TEST_CASE("unit_motion_manager") {
 
   SECTION("Having a component with force") {
     auto force_component = std::make_shared<fixture_component>(0);
-    force_component->force(force_t(1.0, 2.0));
+    force_component->force(force_t(1, 2));
     components->push_back(force_component);
 
     REQUIRE(unit_motion_manager.force().any());
-    REQUIRE(unit_motion_manager.force().x == 1.0);
-    REQUIRE(unit_motion_manager.force().y == 2.0);
+    REQUIRE(unit_motion_manager.force().x == 1);
+    REQUIRE(unit_motion_manager.force().y == 2);
 
     REQUIRE(unit_motion_manager.velocity().none());
-    REQUIRE(unit_motion_manager.velocity().x == 0.0);
-    REQUIRE(unit_motion_manager.velocity().y == 0.0);
+    REQUIRE(unit_motion_manager.velocity().x == 0);
+    REQUIRE(unit_motion_manager.velocity().y == 0);
 
     unit_motion_manager.update();
 
     REQUIRE(unit_motion_manager.velocity().any());
-    REQUIRE(unit_motion_manager.velocity().x == 1.0);
-    REQUIRE(unit_motion_manager.velocity().y == 2.0);
+    REQUIRE(unit_motion_manager.velocity().x == 1);
+    REQUIRE(unit_motion_manager.velocity().y == 2);
 
     unit_motion_manager.update();
 
     REQUIRE(unit_motion_manager.velocity().any());
-    REQUIRE(unit_motion_manager.velocity().x == 2.0);
-    REQUIRE(unit_motion_manager.velocity().y == 4.0);
+    REQUIRE(unit_motion_manager.velocity().x == 2);
+    REQUIRE(unit_motion_manager.velocity().y == 4);
 
     for(int i(0); i<8; ++i)
       unit_motion_manager.update();
 
     REQUIRE(unit_motion_manager.velocity().any());
-    REQUIRE(unit_motion_manager.velocity().x == 10.0);
-    REQUIRE(unit_motion_manager.velocity().y == 20.0);
+    REQUIRE(unit_motion_manager.velocity().x == 10);
+    REQUIRE(unit_motion_manager.velocity().y == 20);
   }
 
   SECTION("Having a component with force with wind resistance") {
@@ -52,14 +52,14 @@ TEST_CASE("unit_motion_manager") {
     unit_motion_manager.update_with_velocity_resistance(wind_resistance);
 
     REQUIRE(unit_motion_manager.velocity().any());
-    REQUIRE(unit_motion_manager.velocity().x == 5.0);
-    REQUIRE(unit_motion_manager.velocity().y == 5.0);
+    REQUIRE(unit_motion_manager.velocity().x == 5);
+    REQUIRE(unit_motion_manager.velocity().y == 5);
 
     unit_motion_manager.update_with_velocity_resistance(wind_resistance);
 
     REQUIRE(unit_motion_manager.velocity().any());
-    REQUIRE(unit_motion_manager.velocity().x == 5.0);
-    REQUIRE(unit_motion_manager.velocity().y == 5.0);
+    REQUIRE(unit_motion_manager.velocity().x == 5);
+    REQUIRE(unit_motion_manager.velocity().y == 5);
   }
 
   // "Air" resistance should be added by adding a force which grows linearly with the velocity.

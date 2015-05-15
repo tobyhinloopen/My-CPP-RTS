@@ -24,8 +24,8 @@ TEST_CASE("unit_template") {
 
     REQUIRE(created_components->size() == 4);
 
-    int created_components_health_sum = 0;
-    int created_components_mass_sum = 0;
+    health_t created_components_health_sum = 0;
+    mass_t created_components_mass_sum = 0;
 
     for(auto created_component : *created_components) {
       created_components_health_sum += created_component->health();

@@ -1,6 +1,7 @@
 #import "unit_motion_manager.h"
 
-short velocity_after_update_with_velocity_resistance(short force, short velocity, unsigned short resistance);
+velocity_magnitude_t velocity_after_update_with_velocity_resistance(
+  const velocity_magnitude_t, const force_magnitude_t, const force_magnitude_t);
 
 unit_motion_manager::unit_motion_manager(const std::shared_ptr<const component_set> components) :
 componentable(components),
@@ -24,15 +25,15 @@ void unit_motion_manager::update() {
   _velocity.y += current_force.y;
 }
 
-void unit_motion_manager::update_with_velocity_resistance(unsigned short velocity_resistance) {
+void unit_motion_manager::update_with_velocity_resistance(const force_magnitude_t velocity_resistance) {
   auto current_force = force();
   _velocity.x = velocity_after_update_with_velocity_resistance(_velocity.x, current_force.x, velocity_resistance);
   _velocity.y = velocity_after_update_with_velocity_resistance(_velocity.y, current_force.y, velocity_resistance);
 }
 
-short velocity_after_update_with_velocity_resistance(short velocity, short force, unsigned short resistance) {
-  short next_velocity_without_resistance = velocity + force;
-  short average_velocity_without_resistance = (velocity + next_velocity_without_resistance) / 2;
-  short absolute_resistance = average_velocity_without_resistance * resistance;
+velocity_magnitude_t velocity_after_update_with_velocity_resistance(const velocity_magnitude_t velocity, const force_magnitude_t force, const force_magnitude_t resistance) {
+  auto next_velocity_without_resistance = velocity + force;
+  auto average_velocity_without_resistance = (velocity + next_velocity_without_resistance) / 2;
+  auto absolute_resistance = average_velocity_without_resistance * resistance;
   return velocity + force - absolute_resistance;
 }

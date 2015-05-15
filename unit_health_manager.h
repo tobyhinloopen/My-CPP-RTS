@@ -3,11 +3,10 @@
 class unit_health_manager : private virtual componentable {
 public:
   unit_health_manager(const std::shared_ptr<const component_set> components);
-  double initial_health() const;
-  double health() const;
+  health_t initial_health() const;
+  health_t health() const;
   bool dead() const;
   bool alive() const;
-  static double health_for_components(const std::shared_ptr<const component_set> components);
 private:
-  const double _initial_health;
+  const health_t _initial_health;
 };

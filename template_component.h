@@ -4,8 +4,8 @@
 class template_component : public component {
 public:
   template_component(component_template component_template);
-  virtual double mass() const;
-  virtual double volatility() const;
+  virtual mass_t mass() const;
+  virtual volatility_t volatility() const;
 private:
   const component_template _component_template;
 };

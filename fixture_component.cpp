@@ -1,7 +1,7 @@
 #import "fixture_component.h"
 
 fixture_component::fixture_component(const health_t health):
-component(health), _mass(0.0), _volatility(0.0), _force() {
+component(health), _mass(0), _volatility(0), _force() {
 }
 
 mass_t fixture_component::mass() const {

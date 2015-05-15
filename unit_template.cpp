@@ -14,22 +14,22 @@ std::unique_ptr<component_set> unit_template::create_components() const {
   return components;
 }
 
-double unit_template::mass() const {
-  double mass = 0.0;
+mass_t unit_template::mass() const {
+  mass_t mass = 0;
   for(const auto component_template : _component_templates)
     mass += component_template.mass;
   return mass;
 }
 
-double unit_template::complexity() const {
-  double complexity = 0.0;
+complexity_t unit_template::complexity() const {
+  complexity_t complexity = 0;
   for(const auto component_template : _component_templates)
     complexity += component_template.complexity;
   return complexity;
 }
 
-double unit_template::health() const {
-  double health = 0.0;
+health_t unit_template::health() const {
+  health_t health = 0;
   for(const auto component_template : _component_templates)
     health += component_template.health;
   return health;

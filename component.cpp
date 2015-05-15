@@ -9,7 +9,7 @@ damage_report component::apply_damage(const damage_t damage) {
     if(damage >= health()) {
       report.damage_applied = _health;
       report.volatility_triggered = volatility();
-      _health = 0.0;
+      _health = 0;
     } else {
       report.damage_applied = damage;
       _health -= damage;
@@ -19,11 +19,11 @@ damage_report component::apply_damage(const damage_t damage) {
 }
 
 mass_t component::mass() const {
-  return 0.0;
+  return 0;
 }
 
 volatility_t component::volatility() const {
-  return 0.0;
+  return 0;
 }
 
 force_t component::force() const {
@@ -35,7 +35,7 @@ health_t component::health() const {
 }
 
 bool component::alive() const {
-  return health() > 0.0;
+  return health() > 0;
 }
 
 bool component::dead() const {

@@ -6,8 +6,8 @@ unit_health_manager(components),
 unit_damage_manager(components) {
 }
 
-double unit::mass() const {
-  double mass = 0.0;
+mass_t unit::mass() const {
+  mass_t mass = 0;
   for(const auto component : *components)
     mass += component->mass();
   return mass;

@@ -1,11 +1,13 @@
 #import "force.h"
 
-force_t::force_t(const double x, const double y): x(x), y(y) {}
+force_t::force_t(): x(0), y(0) {
+}
 
-force_t::force_t(): x(0.0), y(0.0) {}
+force_t::force_t(const force_magnitude_t x, const force_magnitude_t y): x(x), y(y) {
+}
 
 bool force_t::none() const {
-  return x == 0.0 && y == 0.0;
+  return x == 0 && y == 0;
 }
 
 bool force_t::any() const {

@@ -5,9 +5,9 @@ class unit_template {
 public:
   unit_template();
   void add(const component_template &);
-  double mass() const;
-  double health() const;
-  double complexity() const;
+  mass_t mass() const;
+  health_t health() const;
+  complexity_t complexity() const;
   std::unique_ptr<component_set> create_components() const;
 private:
   std::vector<component_template> _component_templates;
