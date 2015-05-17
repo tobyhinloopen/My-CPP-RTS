@@ -17,3 +17,11 @@ velocity_t & velocity_t::operator+=(const velocity_t & other) {
   y += other.y;
   return *this;
 }
+
+bool velocity_t::operator==(const velocity_t & other) {
+  return x == other.x && y == other.y;
+}
+
+bool velocity_t::operator!=(const velocity_t & other) {
+  return !(*this == other);
+}

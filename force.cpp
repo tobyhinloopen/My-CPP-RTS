@@ -19,3 +19,11 @@ force_t & force_t::operator+=(const force_t & other) {
   y += other.y;
   return *this;
 }
+
+bool force_t::operator==(const force_t & other) {
+  return x == other.x && y == other.y;
+}
+
+bool force_t::operator!=(const force_t & other) {
+  return !(*this == other);
+}

@@ -1,5 +1,6 @@
 #import "catch.h"
 #import "velocity.h"
+#import "velocity_support.h"
 
 TEST_CASE("velocity_t") {
   SECTION("Default initializer") {
@@ -23,5 +24,14 @@ TEST_CASE("velocity_t") {
 
     REQUIRE(!velocity.none());
     REQUIRE(velocity.any());
+  }
+
+  SECTION("comparing velocities") {
+    velocity_t velocity_a2(10, 10);
+    velocity_t velocity_a1(10, 10);
+    velocity_t velocity_b(10, 0);
+
+    REQUIRE(velocity_a1 == velocity_a2);
+    REQUIRE(velocity_a1 != velocity_b);
   }
 }

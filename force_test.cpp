@@ -33,4 +33,13 @@ TEST_CASE("force") {
     REQUIRE(force_a.x == 20);
     REQUIRE(force_a.y == 10);
   }
+
+  SECTION("comparing forces") {
+    force_t force_a2(10, 10);
+    force_t force_a1(10, 10);
+    force_t force_b(10, 0);
+
+    REQUIRE(force_a1 == force_a2);
+    REQUIRE(force_a1 != force_b);
+  }
 }

@@ -6,7 +6,7 @@ LDLIBS=
 TEST_SRCS=$(shell find . -name "*.cpp" -not -name "main.cpp")
 TEST_OBJS=$(subst .cpp,.o,$(TEST_SRCS))
 
-MAIN_SRCS=$(shell find . -name "*.cpp" -not -path "./support/*" -not -name "*test.cpp")
+MAIN_SRCS=$(shell find . -name "*.cpp" -not -path "./support/*" -not -name "*test.cpp" -not -name "*support.cpp")
 MAIN_OBJS=$(subst .cpp,.o,$(MAIN_SRCS))
 
 all: test main
